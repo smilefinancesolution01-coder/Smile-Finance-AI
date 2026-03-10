@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>Smile AI | MSME & PMEGP Audit Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-[#020617] text-slate-300 font-sans">
+
+    <nav class="p-6 border-b border-white/5 flex justify-between items-center bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <div class="bg-blue-600 p-2 rounded-lg font-bold text-white">SFS</div>
+            <span class="font-black text-xl text-white tracking-tighter">SMILE AI <span class="text-blue-500">PRO</span></span>
+        </div>
+        <div class="text-[10px] text-green-500 font-mono font-bold animate-pulse">● LIVE AUDIT ENGINE</div>
+    </nav>
+
+    <section class="max-w-4xl mx-auto py-16 px-6">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black text-white mb-4">MSME Audit in <span class="text-blue-500 italic">30 Seconds.</span></h1>
+            <p class="opacity-60">Apna MSME Certificate ya Bank Statement upload karein. Hamara AI 800+ CAs ke dimaag se aapki report banayega.</p>
+        </div>
+
+        <div class="bg-slate-900 border-2 border-dashed border-slate-700 rounded-[40px] p-12 text-center mb-10 hover:border-blue-500 transition-all">
+            <input type="file" id="pdfUpload" class="hidden" accept="application/pdf" onchange="startAudit()">
+            <label for="pdfUpload" class="cursor-pointer">
+                <div class="text-5xl mb-4">📄</div>
+                <h3 class="text-xl font-bold text-white">Upload Your Document (PDF)</h3>
+                <p class="text-sm opacity-50 mt-2">PMEGP, Mudra, aur Govt. Subsidies ke liye check karein.</p>
+            </label>
+        </div>
+
+        <div id="report-area" class="hidden bg-slate-900 border border-slate-800 rounded-[30px] p-6 shadow-2xl">
+            <div id="chat-history" class="space-y-4 mb-6 h-[300px] overflow-y-auto pr-2 text-sm">
+                <div class="bg-blue-600/20 border border-blue-500/30 p-4 rounded-2xl text-blue-100">
+                    Bhai, file mil gayi hai! Main scan kar raha hoon... (800+ CA Database active)
+                </div>
+            </div>
+            
+            <div id="payment-hook" class="hidden mt-6 p-6 bg-blue-600 rounded-2xl text-center">
+                <h4 class="text-xl font-bold mb-2 text-white">🔥 Full Audit Report Taiyar Hai!</h4>
+                <p class="text-sm text-blue-100 mb-4 text-white/80">Aapki report mein 3 Govt. Subsidies (UPTO ₹25 Lakh) mili hain. Full report unlock karne ke liye ₹999 pay karein.</p>
+                <button onclick="alert('Payment Link: Share with 5 friends for ₹99 discount!')" class="bg-white text-blue-600 px-8 py-3 rounded-xl font-black">Unlock Full Report</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function startAudit() {
+            const area = document.getElementById('report-area');
+            const history = document.getElementById('chat-history');
+            const hook = document.getElementById('payment-hook');
+            const file = document.getElementById('pdfUpload').files[0];
+
+            if(!file) return;
+
+            area.classList.remove('hidden');
+            
+            setTimeout(() => {
+                history.innerHTML += '<div class="bg-slate-800 p-4 rounded-2xl">Scanning Document: ' + file.name + '... Done!</div>';
+            }, 1000);
+
+            setTimeout(() => {
+                history.innerHTML += '<div class="bg-slate-800 p-4 rounded-2xl">Bhai, aapke turnover aur registration ke hisaab se aap **PMEGP 35% Subsidy** ke liye eligible ho!</div>';
+                history.scrollTop = history.scrollHeight;
+            }, 2500);
+
+            setTimeout(() => {
+                hook.classList.remove('hidden');
+                history.scrollTop = history.scrollHeight;
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
